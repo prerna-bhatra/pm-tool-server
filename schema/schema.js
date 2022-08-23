@@ -11,11 +11,20 @@ const typeDefs = gql`
     id: String!
     name: String!
     users: [User]!
+    tasks: [Task]!
+  }
+
+  type Task {
+    id: String!
+    name: String!
+    assignee: User!
+    assigneedBy: User!
   }
 
   type Query {
     getAllUsers: [User]!
     getAllProjects: [Project!]
+    getUserById(id: String!): User!
   }
 `;
 
