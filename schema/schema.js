@@ -17,6 +17,7 @@ const typeDefs = gql`
   type Task {
     id: String!
     name: String!
+    project: Project!
     assignee: User!
     assigneedBy: User!
   }
@@ -24,8 +25,13 @@ const typeDefs = gql`
   type Query {
     getAllUsers: [User]!
     getAllProjects: [Project!]
+    getAllTasks: [Task]!
     getUserById(id: String!): User!
+    getProjectById(id: String): Project!
+    getTaskById(id: String): Task!
   }
 `;
 
 module.exports = typeDefs;
+
+// tasks: [Task]!

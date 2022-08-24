@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
   name: { type: String },
-//   project:{
-//     type: Schema.Types.ObjectId,
-//     ref: "projects",
-//   },
+  project:{
+    type: Schema.Types.ObjectId,
+    ref: "projects",
+  },
   assignee: {
     type: Schema.Types.ObjectId,
     ref: "users",

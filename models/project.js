@@ -9,12 +9,12 @@ const ProjectSchema = new Schema({
       ref: "users",
     },
   ],
-  tasks: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "tasks",
-    },
-  ],
+  // tasks: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "tasks",
+  //   },
+  // ],
 });
 
 module.exports = mongoose.model("projects", ProjectSchema);

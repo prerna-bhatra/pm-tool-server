@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("../models/user");
 const Project = require("../models/project");
+const Task = require("../models/task");
 
 const resolvers = {
   Query: {
@@ -9,13 +10,27 @@ const resolvers = {
       return allUsers;
     },
     getAllProjects: async () => {
-      const allProjects = await Project.find().populate("users tasks");
-      console.log("allProjects", allProjects);
+      const allProjects = await Project.find().populate("users");
+      // console.log("allProjects", allProjects);
       return allProjects;
     },
     getUserById: async (parent, args) => {
       const userById = await User.findOne({ _id: args.id });
       return userById;
+    },
+    getProjectById: async (parent, args) => {
+      const projectById = await Project.findOne({ _id: args.id }).populate(
+        "users"
+      );
+
+      return projectById;
+    },
+    getTaskById: async (parent, args) => {
+      const taskById = await Task.findOne({ _id: args.id }).populate(
+        "assignee assigneedBy"
+      );
+
+      return taskById;
     },
   },
   Project: {
@@ -23,7 +38,11 @@ const resolvers = {
       return parent.users;
     },
     tasks: async (parent) => {
-      return parent.tasks;
+      const projectTasks = await Task.find({ project: parent._id }).populate(
+        "assignee assigneedBy"
+      );
+
+      return projectTasks;
     },
   },
 };
