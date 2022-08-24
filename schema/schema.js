@@ -17,6 +17,11 @@ const typeDefs = gql`
   type Task {
     id: String!
     name: String!
+    status: String
+    category: String
+    description: String
+    start: String
+    end: String
     project: Project!
     assignee: User!
     assigneedBy: User!

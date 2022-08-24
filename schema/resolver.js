@@ -41,6 +41,7 @@ const resolvers = {
       const projectTasks = await Task.find({ project: parent._id }).populate(
         "assignee assigneedBy"
       );
+      
 
       return projectTasks;
     },
