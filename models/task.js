@@ -20,20 +20,20 @@ const TaskSchema = new Schema({
     enum: ["to-do", "in-progress", "done"],
     default: "to-do",
   },
-  category:{
-    type:String,
-    enum:["feature","issue"],
+  category: {
+    type: String,
+    enum: ["feature", "issue"],
     default: "feature",
   },
-  description:{
-    type:String
+  description: {
+    type: String,
   },
-  start:{
-    type:Date
+  start: {
+    type: Date,
   },
-  end:{
-    type:Date
-  }
+  end: {
+    type: Date,
+  },
 });
 
 module.exports = mongoose.model("tasks", TaskSchema);

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { type } = require("os");
 const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
@@ -9,6 +10,17 @@ const ProjectSchema = new Schema({
       ref: "users",
     },
   ],
+  lead:{
+    type:Schema.Types.ObjectId,
+    ref:"users"
+  },
+  start:{
+    type:Date
+  }
+  ,
+  end:{
+    type:Date
+  }
 });
 
 module.exports = mongoose.model("projects", ProjectSchema);

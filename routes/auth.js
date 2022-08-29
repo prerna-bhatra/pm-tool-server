@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const users = require("../models/user");
 const router = express.Router();
 
+//create user 
+
 const signup = (req, res) => {
   console.log("----signup---", req.body);
   const { name, email, password } = req.body;

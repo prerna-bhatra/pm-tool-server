@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
 const models = require("./models");
@@ -9,16 +10,16 @@ const app = express();
 
 const userRoutes = require("./routes/auth");
 
-const MONGO_URI =
-  "mongodb+srv://prerna:Prerna1998@cluster0.y3mfrzr.mongodb.net/?retryWrites=true&w=majority";
-if (!MONGO_URI) {
-  throw new Error("You must provide a MongoLab URI");
-}
+// const MONGO_URI =
+//   "mongodb+srv://prerna:Prerna1998@cluster0.y3mfrzr.mongodb.net/pmtool?retryWrites=true&w=majority";
+// if (!MONGO_URI) {
+//   throw new Error("You must provide a MongoLab URI");
+// }
 
 mongoose.Promise = global.Promise;
 const connect = mongoose
   .connect(
-    "mongodb+srv://prerna:Prerna1998@cluster0.y3mfrzr.mongodb.net/pmtool?retryWrites=true&w=majority",
+    process.env.MONGO_URI,
     {
       useNewUrlParser: false,
       useUnifiedTopology: true,
